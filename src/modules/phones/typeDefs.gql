@@ -1,0 +1,20 @@
+type Query {
+  phones: [Phone]
+}
+
+type Phone {
+  id: ID
+  name: String
+  price: Int
+  category: [Category]
+}
+
+type Mutation {
+  createPhone(name: String!, price: Int!, category_id: ID!): [Phone]
+  updatePhone(id: ID, name: String, price: Int, category_id: ID): [Phone]
+  deletePhone(id: ID): [Phone]
+}
+
+type Subscription {
+  phones: [Phone]
+}
