@@ -1,5 +1,3 @@
-# graphQL-subscription
-
 # Categories and Phones Management System with GraphQL Subscriptions and Socket.IO
 
 ## Overview
