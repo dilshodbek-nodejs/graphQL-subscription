@@ -37,11 +37,24 @@ let resolvers = {
       pubsub.publish("update_phone", { phones });
       return phones;
     },
+
+    deletePhone: async (_, { id }) => {
+      const deleted = await phoneModel.deleteOne({ _id: id });
+
+      if (deleted.deletedCount === 0) {
+        throw new Error("Kategoriya topilmadi yoki o‘chirib bo‘lmadi!");
+      }
+
+      const phones = await phoneModel.find();
+      pubsub.publish("delete_phone", { phones });
+
+      return phones;
+    }
   },
 
   Subscription: {
     phones: {
-      subscribe: () => pubsub.asyncIterator(["create_phone", "update_phone"]),
+      subscribe: () => pubsub.asyncIterator(["create_phone", "update_phone", "delete_phone"]),
     },
   },
 };

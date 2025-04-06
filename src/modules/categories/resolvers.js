@@ -3,7 +3,13 @@ const categoryModel = require("./model");
 
 let resolvers = {
   Query: {
-    categories: async () => await categoryModel.find(),
+    categories: async () => {
+      const categories = await categoryModel.find();
+      return categories.map(category => ({
+        id: category._id.toString(),
+        name: category.name,
+      }));
+    },
   },
 
   Mutation: {
@@ -35,12 +41,25 @@ let resolvers = {
 
       return categories;
     },
+
+    deleteCategory: async (_, { id }) => {
+      const deleted = await categoryModel.deleteOne({ _id: id });
+
+      if (deleted.deletedCount === 0) {
+        throw new Error("Kategoriya topilmadi yoki o‘chirib bo‘lmadi!");
+      }
+
+      const categories = await categoryModel.find();
+      pubsub.publish("delete_category", { categories });
+
+      return categories;
+    },
   },
 
   Subscription: {
     categories: {
       subscribe: () =>
-        pubsub.asyncIterator(["category_create", "update_category"]),
+        pubsub.asyncIterator(["category_create", "update_category", "delete_category"]),
     },
   },
 };
