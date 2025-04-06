@@ -9,7 +9,7 @@ const { ApolloServer } = require("@apollo/server");
 const buildGraphqlServer = (httpServer) => {
   let wsServer = new WebSocketServer({
     server: httpServer,
-    path: "/",
+    path: "/graphql",
   });
 
   let serverCleanup = useServer({ schema }, wsServer);
