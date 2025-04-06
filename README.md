@@ -8,7 +8,7 @@ This project implements a real-time management system for categories and phones 
 - **GraphQL** for querying, mutating, and subscribing to real-time updates.
 - **Subscriptions** for real-time updates when categories or phones are created/updated.
 - **Socket.IO** for broadcasting real-time events to connected clients.
-- **MongoDB or Prisma** for database interactions.
+- **MongoDB** for database interactions.
 
 ## Technologies Used
 - **Node.js**
