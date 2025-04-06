@@ -24,5 +24,5 @@ This project implements a real-time management system for categories and phones 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/categories-phones-realtime.git
-   cd categories-phones-realtime
+   git clone https://github.com/your-username/graphQL-subscription.git
+   cd graphQL-subscription
