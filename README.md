@@ -13,11 +13,10 @@ This project implements a real-time management system for categories and phones 
 ## Technologies Used
 - **Node.js**
 - **Express.js**
-- **Apollo Server** (for GraphQL API)
-- **GraphQL Subscriptions** (for real-time updates)
-- **Socket.IO** (for WebSocket communication)
-- **MongoDB or Prisma** (for database)
-- **Redis** (optional, for caching)
+- **Apollo Server** 
+- **GraphQL Subscriptions**
+- **Socket.IO** 
+- **MongoDB**
   
 ## Getting Started
 
